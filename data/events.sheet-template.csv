@@ -1,0 +1,6 @@
+shop_name,district,category,event_title,event_desc,start_date,end_date,boost_weight,closed_today,note
+阿明豬心冬粉,中西區,food,台南美食節,國華街美食節攤位擴大營業,2026-07-01,2026-07-31,2.0,FALSE,活動期間限定小菜
+莉莉水果店,中西區,drink,夏季芒果季,芒果冰買一送一,2026-07-05,2026-08-15,1.5,FALSE,
+神農街精釀酒吧,中西區,alcohol,神農街夜祭,在地精釀 + 現場音樂,2026-07-12,2026-07-13,2.5,FALSE,活動兩日限定
+六甲頂牛肉湯,永康區,food,,,,,1.0,TRUE,今日公休（分流應跳過）
+安平蝦捲老店,安平區,food,安平古堡文化週,配合觀光活動延長營業,2026-07-06,2026-07-20,1.3,FALSE,

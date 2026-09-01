@@ -1,0 +1,14 @@
+{
+  "name": "tainan-food-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend bridge from the web UI to the Hermes Tainan food agent",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
