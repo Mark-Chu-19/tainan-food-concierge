@@ -1,6 +1,6 @@
 # 台南美食店家口袋名單 (Tainan Restaurant List)
 
-本名單由 Tainan Nomnom Agent 從您匯入的社群平台截圖（Threads 推薦、留言串、Apple Notes 備忘錄）中自動辨識並分類彙整而成，共計收錄 **110+ 間台南在地美食與特色店鋪**。此名單可直接作為專案 `tainan-foods-reference.md` 知識庫的種子數據。
+本名單彙整自社群平台推薦（Threads 留言串）與在地人口袋備忘錄，共收錄 **110+ 間台南在地美食與特色店鋪**，作為 `tainan-foods-reference.md` 知識庫的種子數據。
 
 ---
 

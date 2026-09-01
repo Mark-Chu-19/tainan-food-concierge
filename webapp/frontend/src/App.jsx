@@ -292,7 +292,7 @@ function StartScreen({ onPick, promo, onDismiss }) {
         <PromoBanner promo={promo} onPick={onPick} onDismiss={onDismiss} />
       )}
       <div className="hero-emoji">🍜</div>
-      <h1>Tainan Nomnom</h1>
+      <h1>Tainan Food Concierge</h1>
       <p className="tagline">
         Your local food guide for Tainan. Real-time hours, ratings &amp; a map —
         picked to spread the love across the city, not just the #1 shop.
@@ -390,7 +390,7 @@ export default function App() {
         <div className="brandwrap">
           <span className="brandmark">🍜</span>
           <div>
-            <div className="brand">Tainan Nomnom</div>
+            <div className="brand">Tainan Food Concierge</div>
             <div className="brandsub">
               <span className="livedot" /> Live hours · fair to every shop
             </div>
