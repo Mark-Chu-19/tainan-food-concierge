@@ -4,7 +4,6 @@
 # stops both when you press Ctrl+C.
 set -e
 
-export PATH="/opt/homebrew/bin:$HOME/.local/bin:$PATH"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "🍜 Starting Tainan Food Concierge…"

@@ -1,14 +1,16 @@
 {
   "name": "tainan-food-backend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Backend bridge from the web UI to the Hermes Tainan food agent",
+  "description": "Tainan Food Concierge backend — Claude-powered agentic loop with live Google Places tools",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.21.2"
   }
 }

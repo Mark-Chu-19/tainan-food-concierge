@@ -1,9 +1,9 @@
 # 🏆 Demo Runbook（週四評分用）
 
-> **2026-08 更新：後端預設跑「demo 模式」**（`MOCK_MODE`，不需要 Gemini key）。
+> **2026-08 更新（開源重構後）：後端在沒有 `ANTHROPIC_API_KEY` 時自動跑「demo 模式」**。
 > 對話邏輯是腳本化的，但店家資料仍是 Google Places **即時查詢**（真評分、真營業時間），
 > 分流輪替也是真的在運作——下面的台本照跑，回覆只要 ~1 秒。
-> 要切回真 agent：修好 Gemini key 後用 `MOCK_MODE=0` 啟動後端。
+> 要切回真 agent：在 `webapp/backend/.env` 填入 `ANTHROPIC_API_KEY`（Claude agent loop）。
 
 ## 開演前 10 分鐘（checklist）
 
@@ -12,13 +12,13 @@
 bash "webapp/start.sh"          # 後端 :8787 + 前端（看 Vite 印出的網址，通常 5173/5174）
 
 # 2. 清空分流記錄（讓 demo 從乾淨狀態開始）
-node ~/.hermes/tainan-distlog/distlog.mjs reset
+node tools/distlog.mjs reset
 
 # 3. 快速煙霧測試（確認 agent + Google Maps 活著）
 curl -s -X POST http://localhost:8787/chat -H 'Content-Type: application/json' \
   -d '{"sessionId":"smoke","message":"beef soup near 中西區 now, one pick"}' | head -c 300
 # 有回牛肉湯店名 = 一切正常。跑完再 reset 一次：
-node ~/.hermes/tainan-distlog/distlog.mjs reset
+node tools/distlog.mjs reset
 
 # 4. 開兩個瀏覽器「視窗」（不是分頁，方便並排）都連前端網址
 # 5. 手機開熱點備援（現場 WiFi 不可信）
@@ -46,7 +46,7 @@ node ~/.hermes/tainan-distlog/distlog.mjs reset
 > 「這是市府看到的畫面：需求即時分散到幾家店、最大單店占比、當月活動。沒有這個引擎，100% 的人流都去第一名；有了它，整條街都活了。」
 
 **[2:20 Beat 5 — 收尾]**
-> 「架構：Hermes agent 框架 + Gemini + Google Maps 即時資料 + 市府活動資料層。今天是台南美食，同一套引擎明天就是夜市、景點、全城分流。每個城市都該有一個。」
+> 「架構：Claude API 自建 agent loop + Google Maps 即時資料 + 市府活動資料層。今天是台南美食，同一套引擎明天就是夜市、景點、全城分流。每個城市都該有一個。」
 
 ## 防災預案
 
@@ -54,7 +54,7 @@ node ~/.hermes/tainan-distlog/distlog.mjs reset
 |------|------|
 | 回覆超過 30 秒 / 失敗 | 點錯誤列的 **↻ Try again**；同時繼續講架構，不要乾等 |
 | 現場 WiFi 掛掉 | 切手機熱點（Mac 連熱點後 localhost 照常運作，**不需改任何設定**） |
-| Gemini 突然 429/當機 | 深呼吸，重送一次；還不行 → 用先前截圖講流程（**今晚先截好：開場+推薦+徽章+儀表板 4 張**） |
+| LLM API 突然 429/當機 | 深呼吸，重送一次；還不行 → 用先前截圖講流程（**今晚先截好：開場+推薦+徽章+儀表板 4 張**） |
 | 兩視窗推到同一家 | 說「pool 裡評分相同的店會輪替，我再問一次」→ 通常第二次就分開 |
 
 ## 評審 Q&A 預備

@@ -9,9 +9,9 @@
 // across sessions on purpose, unlike the per-chat dietary profile.
 //
 // Usage:
-//   node distlog.mjs get            -> { "<shop>": countWithinWindow, ... }
-//   node distlog.mjs bump "<shop>"  -> record one recommendation now (atomic)
-//   node distlog.mjs reset          -> clear everything (run before a demo)
+//   node tools/distlog.mjs get            -> { "<shop>": countWithinWindow, ... }
+//   node tools/distlog.mjs bump "<shop>"  -> record one recommendation (atomic)
+//   node tools/distlog.mjs reset          -> clear everything (run before a demo)
 
 import {
   readFileSync,
@@ -21,12 +21,14 @@ import {
   closeSync,
   unlinkSync,
 } from "fs";
-import { homedir } from "os";
-import { join } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
-const DIR = join(homedir(), ".hermes", "tainan-distlog");
-const LOG = join(DIR, "log.json");
-const LOCK = join(DIR, "log.lock");
+// Same file the backend uses: <repo>/.data/distlog.json (DIST_LOG_PATH overrides).
+const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const LOG = process.env.DIST_LOG_PATH || join(REPO_ROOT, ".data", "distlog.json");
+const DIR = dirname(LOG);
+const LOCK = join(DIR, "distlog.lock");
 const WINDOW_MS = Number(process.env.DIST_WINDOW_MS || 2 * 60 * 60 * 1000);
 
 function sleep(ms) {

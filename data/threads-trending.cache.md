@@ -17,5 +17,5 @@ Demo 前手動更新：從 Threads 搜「台南 美食 / 台南 牛肉湯 / 台�
 
 ```
 # 需 threads_keyword_search 權限，限流 500/滾動 7 天
-hermes /tainan-trending-threads 更新台南美食熱門討論到快取
+手動更新台南美食熱門討論到此快取（未來接 Threads 官方 API）
 ```
