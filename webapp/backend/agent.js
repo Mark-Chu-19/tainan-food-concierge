@@ -10,8 +10,8 @@ const Anthropic = require("@anthropic-ai/sdk");
 const { searchPlaces, placeDetails } = require("./lib/maps");
 const { getPromotions } = require("./lib/events");
 
-const MODEL = process.env.CLAUDE_MODEL || "claude-opus-5";
-const EFFORT = process.env.CLAUDE_EFFORT || "low"; // chat is latency-sensitive
+const MODEL = process.env.AGENT_MODEL || "claude-opus-5";
+const EFFORT = process.env.AGENT_EFFORT || "low"; // chat is latency-sensitive
 const MAX_TOOL_ITERATIONS = 8;
 const MAX_HISTORY_MESSAGES = 24;
 
@@ -103,6 +103,7 @@ const TOOLS = [
     input_schema: {
       type: "object",
       properties: {},
+      required: [],
       additionalProperties: false,
     },
     strict: true,
@@ -166,8 +167,8 @@ async function runAgent(sessionId, userMessage) {
       output_config: { effort: EFFORT },
       // Refusal fallback: on a policy decline the API transparently re-runs
       // the request on a fallback model instead of returning nothing.
-      betas: ["server-side-fallback-2026-07-01"],
-      fallbacks: "default",
+      betas: ["server-side-fallback-2026-06-01"],
+      fallbacks: [{ model: "claude-opus-4-8" }],
       system: [
         {
           type: "text",

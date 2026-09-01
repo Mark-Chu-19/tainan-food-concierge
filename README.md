@@ -74,7 +74,7 @@ Open **two browser windows** (each is its own session) and ask both: `beef soup 
 |---|---|---|
 | `ANTHROPIC_API_KEY` | `webapp/backend/.env` | Claude agent (empty → demo mode) |
 | `GOOGLE_MAPS_API_KEY` | `webapp/backend/.env` | Live Places data (Places API enabled) |
-| `CLAUDE_MODEL` / `CLAUDE_EFFORT` | `webapp/backend/.env` | Model (default `claude-opus-5`) and effort (default `low` for snappy chat) |
+| `AGENT_MODEL` / `AGENT_EFFORT` | `webapp/backend/.env` | Model (default `claude-opus-5`) and effort (default `low` for snappy chat) |
 | `DEMO_MODE=1` | `webapp/backend/.env` | Force the scripted fallback |
 | `VITE_MAPS_KEY` | `webapp/frontend/.env` | Embedded mini-maps (optional) |
 
